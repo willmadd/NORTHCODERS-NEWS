@@ -1,0 +1,49 @@
+.welcomeBox{
+    height:400px;
+    width:600px;
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    border: 1px solid black;
+    border-radius:4px;
+    z-index: 10000;
+    background-color: #E8E8E8;
+    padding:30px;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.3), inset 0px 1px 0px rgba(255,255,255,0.25);
+background-image: url(/images/avatars.svg);
+background-position: bottom;
+background-repeat: repeat-x;
+padding-bottom:100px;
+      
+}
+.welcomeBox h1{
+    margin:0px;
+}
+
+.faderscreen{
+    width:100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 10001;
+    height:100vh;
+    /* opacity: 0.5; */
+}
+
+
+@keyframes dropin {
+    0% {
+      top: -700px;
+    }
+    40% {
+      top: 30%;
+    }
+    100% {
+      top: 15%;
+    }
+  }
+  
+  .welcomeBox {
+     animation: dropin 1s 1;
+  }

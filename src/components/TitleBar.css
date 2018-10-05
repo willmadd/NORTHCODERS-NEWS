@@ -1,0 +1,21 @@
+.titleBar{
+    background-color: #272822;
+    color:#CCCCCC;
+    display: flex;
+    justify-content: center;
+}
+
+.titleBar h1{
+    margin:0px;
+    padding: 0px;
+    text-align: center;
+    padding:3px;
+    margin-right:10px;
+
+}
+
+.ncninja{
+height:50px;
+border-radius:50%;
+background-color: #3f51b5;
+}

@@ -1,0 +1,50 @@
+.addUserForm{
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding:20px;
+    background-color:#3f51b5;
+    color:white;
+
+}
+
+.newUserInput{
+    width:100%;
+    line-height:40px;
+    font-size:36px;
+    border: 1px solid black;
+    border-radius:4px;
+    padding:2px;
+    margin-bottom:5px;
+}
+
+.buttonHolder{
+    width:100%;
+    height:20px;
+display: flex;
+height:30px;
+}
+
+.signupbutton{
+    flex:1;
+    height:30px;
+    border-radius:5px;
+    border: 1px solid black;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.3), inset 0px 1px 0px rgba(255,255,255,0.25);
+    cursor:pointer;
+}
+
+.signupbutton:hover{
+    box-shadow: 0px 0px 0px rgba(0,0,0,0.3), inset 0px 0px 0px rgba(255,255,255,0.25);
+    transition: 0.1s;
+}
+
+#cancelButton{
+    background-color: tomato;
+}
+
+#submitButton{
+    background-color: olivedrab;
+}

@@ -27,7 +27,6 @@ class Article extends Component {
 
   render() {
     if(this.state.error) {
-      console.log(this.state.error.message)
       return <Redirect to=
       {{
         pathname:"/error",
@@ -76,10 +75,9 @@ class Article extends Component {
         article
       });
     })
-    .catch(err=>{
-      console.log(err);
+    .catch(error=>{
       this.setState({
-          error:err
+          error
       })
     })
   };

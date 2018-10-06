@@ -88,27 +88,19 @@ export const postArticle = (newArticle, topic) => {
 export const changeCommentVote = (direction, id) => {
   return axios
     .put(`${DB_URL}/comments/${id}?vote=${direction}`)
-    .then(({ data }) => data)
-    .catch(err => {
-      console.log(err);
-      throw err;
-    });
+    .then(({ data }) => data);
 };
 
 export const getUserInfo = username => {
-  return axios.get(`${DB_URL}/users/${username}`).then(({ data }) => data.userData);
-  
+  return axios.get(`${DB_URL}/users/${username}`)
+  .then(({ data }) => data.userData);
 };
 
 
 export const getAllUsers = () => {
   return axios
     .get(`${DB_URL}/users`)
-    .then(({ data }) => data.users)
-    .catch(err => {
-      console.log(err);
-      throw err;
-    });
+    .then(({ data }) => data.users);
 };
 
 

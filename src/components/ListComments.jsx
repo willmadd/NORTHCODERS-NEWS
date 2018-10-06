@@ -25,7 +25,7 @@ class ListComments extends Component {
     //   console.log(this.props.user)
     return (
       <div>
-        <h3>Comments</h3>
+        <h3>Comments - You can only delete your own comments</h3>
         <CommentAdder updateComments={this.updateComments} articleid={this.props.articleid} user = {this.props.user}/>
         {this.state.finishedLoading &&
           !this.state.comments.length &&
@@ -44,14 +44,14 @@ class ListComments extends Component {
                 return (
                   <li key={comment._id} className="commentListItem">
                   <Link to={`/users/${comment.created_by.username}`}>
-                  <img className = "avatar" src={comment.created_by.avatar_url} onError={img=>{img.target.src = "/images/ncninja.svg"}}/>
+                  <img className = "avatar" src={comment.created_by.avatar_url} onError={img=>{img.target.src = "/images/ncninja.svg" } }alt="avatar"/>
                   </Link>
                     <p>{comment.body}</p>
                     <SubmittedBy
                       username={comment.created_by.username}
                       created_at={comment.created_at}
                     />
-                    <button onClick={()=>this.deleteComment(comment._id)}>Delete</button>
+                    {comment.created_by._id === this.props.user && <button className="deleteButton" onClick={()=>this.deleteComment(comment._id)}></button>}
                     <VoteControl count={comment.votes} vote={this.voteComment} id={comment._id}/>
                   </li>
                 );
@@ -79,8 +79,6 @@ class ListComments extends Component {
 
 
   updateComments = newComment => {
-      console.log(this.state.comments);
-      console.log(newComment);
     let newComments = [...this.state.comments, newComment];
     this.setState({
       comments: newComments

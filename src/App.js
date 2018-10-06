@@ -14,7 +14,7 @@ import ErrorPage from "./components/ErrorPage";
 class App extends Component {
   state = {
     user: "",
-    viewWelcome: true
+    viewWelcome: false
   };
 
   componentDidMount = () => {
@@ -34,9 +34,7 @@ class App extends Component {
   render() {
     return (
       <div>
-
         <Menu changeUser={this.changeUser} />
-
         {this.state.viewWelcome && (
           <Welcome
           closeWelcome={this.closeWelcome}
@@ -54,12 +52,11 @@ class App extends Component {
             <Article {...routerProps} user={this.state.user} />
             )}
             />
-
         <Route exact path="/users/:username" component={Users} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/error" component={ErrorPage}/>
         <ErrorPage />
-            </Switch>
+        </Switch>
       </div>
     );
   }

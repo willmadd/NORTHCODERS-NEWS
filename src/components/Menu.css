@@ -1,91 +1,131 @@
-.mainNav{
-    background-color: #3f51b5;
-    font-family: 'Roboto', sans-serif;
-    padding:15px;
-    font-size: 10px;
-    color: #C5CAE9;
-    display: flex;
-    justify-items: space-around;
+.mainNav {
+  background-color: #3f51b5;
+  font-family: "Roboto", sans-serif;
+  padding: 0px;
+  font-size: 10px;
+  color: #c5cae9;
+  display: flex;
+  justify-items: space-around;
+  height:45px;
 }
 
-.menuItem{
-    padding-right:40px;
+.menuItem {
+  padding-right: 40px;
+  cursor: pointer;
 }
-
 
 .styled-select.slate {
+  height: 20px;
+  width: 140px;
+  /* background-color: antiquewhite; */
+}
 
-    height: 20px;
-    width: 140px;
-    /* background-color: antiquewhite; */
- }
+.styled-select select {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  height: 20px;
+  padding: 2px;
+  width: 268px;
+  font-family: "Roboto", sans-serif;
+  color: #c5cae9;
+  font-weight: 800;
+}
 
+.styled-select {
+  height: 10px;
+  overflow: hidden;
+  width: 140px;
+}
+a {
+  text-decoration: none;
+}
 
- .styled-select select {
-    background: transparent;
-    border: none;
-    font-size: 14px;
-    height: 20px;
-    padding: 2px; /* If you add too much padding here, the options won't show in IE */
-    width: 268px;
-    font-family: 'Roboto', sans-serif;
-    color: #C5CAE9;
-    font-weight: 800;
+nav, #signupbutton button {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+}
 
- }
+nav ul {
+  background: #3f51b5;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
 
- .styled-select {
-    height: 10px;
-    overflow: hidden;
-    width: 140px;
- }
+nav li {
+  /* color: #fff; */
+  /* background: darkorange; */
+  display: block;
+  float: left;
+  padding: 15px;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+  width:100px;
+}
 
- ul{
-    padding:0px;
-    margin: 0px;
-  }
+nav li a {
+
+}
+
+nav li:hover{
+  background: darkblue;
+  cursor: pointer;
+}
+
+nav ul li ul {
+  visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  left: 0;
+  display: none;
+}
+
+nav ul li:hover > ul,
+nav ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  /* width:5rem; */
+}
+
+nav ul li ul li {
+  clear: both;
+  width: 100%;
+}
+
+.dropdown {
+  z-index: 1000000000;
+}
+
+#signupbutton{
+  margin:0px;
+  padding:03px;
+  padding-left:10px;
   
-  
-  li {
-    display: block;
-    transition-duration: 0.5s;
-   }
-   
-   li:hover {
-     cursor: pointer;
-   }
-   
-  ul li{
-    position: relative;;
-  }
-  
-   .topicList li {
-     top:23px;
-     visibility: hidden;
-     opacity: 0;
-     position: absolute;
-     transition: all 0.5s ease;
-     margin-top: 1rem;
-     left: 0;
-     display: none;
-     z-index: 500;
-     background-color: #19647E;
-     /* padding: 0px 10px; */
-     width: 100%;
-   }
-   
-   ul li:hover > ul,
-   ul li ul:hover {
-     visibility: visible;
-     opacity: 1;
-     display: block;
-   }
-   
-   ul li ul li {
-     clear: both;
-     width: 100%;
-   }
-  
-   ul li ul li:hover{
-    background-color: #28AFB0;
-   }
+}
+
+#signupbutton button{
+  cursor: pointer;
+  background-color: transparent;
+  border:0px;
+  width:100px;
+  margin:0px;
+  padding:0px;
+  height:42px;
+  font-family: "Roboto", sans-serif;
+  color: #c5cae9;
+  text-align: left;
+
+
+}
+
+.menuItem, #navSelect{
+  padding:15px;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+}

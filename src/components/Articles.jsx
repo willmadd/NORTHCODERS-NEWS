@@ -4,19 +4,16 @@ import moment from "moment";
 import * as api from "../api";
 import sortBy from "lodash.sortby";
 import VoteControl from "./VoteControl";
-import {Link} from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Topicheader from "./Topicheader";
 import SubmittedBy from "./SubmittedBy";
 import Loader from "./Loader";
 import ArticleAdder from "./ArticleAdder";
 
-
-
-
-
 class articles extends Component {
   state = {
     articles: [],
+    error: null
     // voteChange: 0
   };
 
@@ -25,16 +22,33 @@ class articles extends Component {
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    // if (prevProps !== this.props ||prevState !== this.state) {
-    //   this.getArticles(this.props.match.params.topic);
-    // }
+    if (
+      prevProps.match.params.topic_slug !== this.props.match.params.topic_slug
+    ) {
+      this.getArticles(this.props.match.params.topic_slug);
+    }
   };
 
   render() {
+    if(this.state.error) {
+      return <Redirect to=
+      {{
+        pathname:"/error",
+        state:{
+          message: this.state.error.message
+        }
+      }}
+      />
+    }
     return (
       <div className="bodycontent">
-      {!this.state.articles[0] && <Loader/>}
-      {this.props.match.params.topic_slug && <ArticleAdder topic ={this.props.match.params.topic_slug} addArticle={this.addArticle}/>}
+        {!this.state.articles[0] && <Loader />}
+        {this.props.match.params.topic_slug && (
+          <ArticleAdder
+            topic={this.props.match.params.topic_slug}
+            addArticle={this.addArticle}
+          />
+        )}
         <ul className="articleUL">
           {sortBy([...this.state.articles], article => {
             return new moment(article.created_at);
@@ -44,28 +58,40 @@ class articles extends Component {
             .map(article => {
               return (
                 <li key={article._id} className="articleCard">
-                <Link to={`/articles/${article._id}`}>
-                  <img
-                    className="articleCardImage"
-                    src={`https://picsum.photos/600/200&${article._id}`}
-                    alt="title"
-                  />
-                  <Topicheader text={article.belongs_to}/>
-                  <h3>{article.title}</h3>
+                  <Link to={`/articles/${article._id}`}>
+                    <img
+                      className="articleCardImage"
+                      src={`https://picsum.photos/600/200&${article._id}`}
+                      alt="title"
+                    />
+                  </Link>
+                  <Link to={`/topics/${article.belongs_to}`}>
+                    <Topicheader text={article.belongs_to} />
+                  </Link>
+                  <Link to={`/articles/${article._id}`}>
+                    <h3>{article.title}</h3>
 
-                  <p>
-                    {article.body
-                      .split(" ")
-                      .slice(0, 15)
-                      .join(" ")}
-                    {article.body.split(" ")[16] && "..."}
-                  </p>
-                </Link>
-                  <SubmittedBy userid = {article.created_by._id} created_at={article.created_at} username={article.created_by.username}/>
+                    <p>
+                      {article.body
+                        .split(" ")
+                        .slice(0, 15)
+                        .join(" ")}
+                      {article.body.split(" ")[16] && "..."}
+                    </p>
+                  </Link>
+                  <SubmittedBy
+                    userid={article.created_by._id}
+                    created_at={article.created_at}
+                    username={article.created_by.username}
+                  />
                   <hr />
                   <div className="articleInteractive">
-                  <p className="commentCount">{article.comment}</p>
-                  <VoteControl count={article.votes} vote={this.voteArticle} id={article._id}/>
+                    <p className="commentCount">{article.comment}</p>
+                    <VoteControl
+                      count={article.votes}
+                      vote={this.voteArticle}
+                      id={article._id}
+                    />
                   </div>
                 </li>
               );
@@ -82,13 +108,12 @@ class articles extends Component {
           return {
             ...res,
             comment: article.comment
-
-          }
+          };
         }
         return article;
       });
       this.setState({
-        articles: newState,
+        articles: newState
       });
     });
   };
@@ -99,6 +124,11 @@ class articles extends Component {
         this.setState({
           articles
         });
+      })
+      .catch(error=>{
+        this.setState({
+          error
+        })
       });
     } else {
       api.getAllArticles().then(articles => {
@@ -109,12 +139,12 @@ class articles extends Component {
     }
   };
 
-  addArticle = (newArticle) => {
-    const newArticles = [...this.state.articles, newArticle.article]
+  addArticle = newArticle => {
+    const newArticles = [...this.state.articles, newArticle.article];
     this.setState({
-      articles:newArticles
-    })
-  }
+      articles: newArticles
+    });
+  };
 }
 
 export default articles;

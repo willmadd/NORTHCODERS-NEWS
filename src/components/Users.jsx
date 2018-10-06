@@ -1,27 +1,48 @@
 import React, { Component } from "react";
 import * as api from "../api";
 import Loader from "./Loader";
+import { Redirect } from "react-router-dom";
 
 class Users extends Component {
   state = {
-    user: {}
+    user: {},
+    error: null
   };
 
   componentDidMount = () => {
-      console.log(this.props.match.params.username)
-    api.getUserInfo(this.props.match.params.username).then(res => {
-        console.log(res)
+    api.getUserInfo(this.props.match.params.username)
+    .then(res => {
+      console.log(res)
       this.setState({
         user: res
       });
+    })
+    .catch(error=>{
+      console.log('error found');
+      console.log(error.message);
+      this.setState({
+        error
+      })
     });
   };
 
   render() {
+
+    if(this.state.error) {
+      return <Redirect to=
+      {{
+        pathname:"/error",
+        state:{
+          message: this.state.error.message
+        }
+      }}
+      />
+    }
+
     return (
       <div>
 
-        {!this.state.user.username && <Loader/>}
+        {this.state.user && !this.state.user.username && <Loader/>}
         {this.state.user && <div>
         <h3> User Name: {this.state.user.username}</h3>
         <h3> Name: {this.state.user.name}</h3>

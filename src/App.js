@@ -14,22 +14,8 @@ import ErrorPage from "./components/ErrorPage";
 class App extends Component {
   state = {
     user: "",
-    viewWelcome: false
   };
 
-  componentDidMount = () => {
-    let visited = localStorage["alreadyVisited"];
-    if (visited) {
-      this.setState({
-        viewWelcome: false
-      });
-    } else {
-      localStorage["alreadyVisited"] = true;
-      this.setState({
-        viewWelcome: true
-      });
-    }
-  };
 
   render() {
     return (
@@ -44,7 +30,7 @@ class App extends Component {
         <TitleBar />
           <Switch>
         <Route exact path="/" component={Articles} />
-        <Route exact path="/topics/:topic_slug" component={Articles} />
+        {/* <Route exact path="/topics/:topic_slug" component={Articles} />}/> */}
         <Route
           exact
           path="/articles/:article_id"
@@ -52,6 +38,18 @@ class App extends Component {
             <Article {...routerProps} user={this.state.user} />
             )}
             />
+
+
+ <Route
+          exact
+          path="/topics/:topic_slug"
+          render={routerProps => (
+            <Articles {...routerProps} user={this.state.user} />
+            )}
+            />
+
+
+
         <Route exact path="/users/:username" component={Users} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/error" component={ErrorPage}/>
@@ -62,7 +60,6 @@ class App extends Component {
   }
 
   changeUser = user => {
-    console.log('changeuser activated')
     this.setState({
       user
     });

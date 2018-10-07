@@ -1,0 +1,60 @@
+.errorBody{
+    background-color: #E8E8E8;
+    height:90vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-family: 'Creepster', cursive;
+}
+.monster{
+    background-image: url(/images/404monster.svg);
+    background-repeat: no-repeat;
+    height:250px;
+    width:280px;
+    background-size: 280px;
+    background-position: bottom;
+
+}
+
+.monsterMessage{
+    background-color: white;
+    max-width:200px;
+    text-align: center;
+    padding:10px 40px;
+    z-index: 10;
+    border-radius:5px;
+    border: 1px solid black;
+    background-image: url(/images/wodtexture.jpg);
+    -webkit-box-shadow: 7px 7px 26px -8px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 7px 26px -8px rgba(0,0,0,0.75);
+box-shadow: 7px 7px 26px -8px rgba(0,0,0,0.75);
+ 
+}
+
+.errorContainer{
+
+min-height: 100px;
+min-width: 100px;
+display: flex;
+flex-direction: column;
+animation: monsterdropin 1s 1;
+}
+
+
+@keyframes monsterdropin {
+    0% {
+      margin-bottom:10000px
+    }
+    40% {
+      margin-bottom:700px;
+    }
+    80% {
+        margin-bottom: 0px;
+      }
+    90% {
+        margin-bottom: 25px;
+      }
+    100% {
+      margin-bottom: 0px;
+    }
+  }

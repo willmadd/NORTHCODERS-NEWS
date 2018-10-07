@@ -19,8 +19,6 @@ Welcome.propTypes = {
     closeWelcome: PropTypes.func.isRequired,
     changeUser: PropTypes.func.isRequired,
     updateUsers: PropTypes.func.isRequired
-
-  //   updateComments: PropTypes.func.isRequired
   };
 
 export default Welcome;

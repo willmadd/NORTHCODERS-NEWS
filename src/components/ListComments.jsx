@@ -68,17 +68,25 @@ class ListComments extends Component {
   }
 
   fetchComments = () => {
-    api.getCommentsByArticleId(this.props.articleid).then(comments => {
+    api.getCommentsByArticleId(this.props.articleid)
+    .then(comments => {
       if (!comments) comments = [];
       this.setState({
         comments,
         finishedLoading: true
       });
+    })
+    .catch(error=>{
+console.log(error);
+this.setState({
+  finishedLoading: true
+})
     });
   };
 
 
   updateComments = newComment => {
+
     let newComments = [...this.state.comments, newComment];
     this.setState({
       comments: newComments

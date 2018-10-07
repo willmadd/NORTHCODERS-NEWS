@@ -13,6 +13,17 @@ class Menu extends Component {
   componentDidMount = () => {
     this.getTopics();
     this.getUsers();
+    let visited = localStorage["alreadyVisited"];
+    if (visited) {
+      this.setState({
+        showSignUp: false
+      });
+    } else {
+      localStorage["alreadyVisited"] = true;
+      this.setState({
+        showSignUp: true
+      });
+    }
   };
 
   render() {
@@ -49,7 +60,7 @@ class Menu extends Component {
             </li>
             
             <li id="signupbutton" className="menuItem">
-              <button onClick={() => this.showSignUp()} >Sign Up</button>
+              <button onClick={() => this.showSignUp()}>Sign Up</button>
             </li>
 
 
@@ -64,7 +75,7 @@ class Menu extends Component {
                 this.props.changeUser(event.target.value);
               }}
             >
-              <option value="" disabled>
+              <option value="">
                 Log In
               </option>
               {this.state.users.length

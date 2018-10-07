@@ -9,7 +9,8 @@ class SignUp extends Component {
     username: "",
     avatarurl: "",
     userNameAvailable: false,
-    usernames:[]
+    usernames:[],
+    submit:false
   };
 
   componentDidMount = () => {

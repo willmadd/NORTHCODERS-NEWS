@@ -30,8 +30,7 @@ export const getCommentsByArticleId = id => {
     .get(`${DB_URL}/articles/${id}/comments`)
     .then(({ data }) => {
       return data.commentData;
-    })
-    .catch(err => {});
+    });
 };
 
 export const changeVote = (direction, id) => {
@@ -40,7 +39,6 @@ export const changeVote = (direction, id) => {
     .then(({ data }) => data.article)
     .catch(err => {
       console.log(err);
-      throw err;
     });
 };
 
@@ -50,7 +48,6 @@ export const getTopics = () => {
     .then(({ data }) => data.topicData)
     .catch(err => {
       console.log(err);
-      throw err;
     });
 };
 
@@ -61,7 +58,6 @@ export const postComment = (newComment, id) => {
 
     .catch(err => {
       console.log(err);
-      throw err;
     });
 };
 
@@ -71,7 +67,6 @@ export const deleteComment = id => {
     .then(({ data }) => data)
     .catch(err => {
       console.log(err);
-      throw err;
     });
 };
 
@@ -81,7 +76,6 @@ export const postArticle = (newArticle, topic) => {
     .then(({ data }) => data)
     .catch(err => {
       console.log(err);
-      throw err;
     });
 };
 

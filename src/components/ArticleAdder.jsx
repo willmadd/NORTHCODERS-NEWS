@@ -12,6 +12,11 @@ class ArticleAdder extends Component {
     return (
       <div>
         <TopicHeader text={this.props.topic} />
+
+{this.props.user?
+  
+<div>
+
         <h1>Add an Article...</h1>
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -36,6 +41,12 @@ class ArticleAdder extends Component {
           </label>
           <input type="submit" />
         </form>
+</div>
+:<h1>Please Log in to submit an article</h1>}
+
+
+
+
       </div>
     );
   }
@@ -57,7 +68,7 @@ class ArticleAdder extends Component {
     let newArticleBody = {
       title: this.state.title,
       body: this.state.body,
-      created_by: "5ba375968568c05a1cbedacd"
+      created_by: this.props.user
     };
 
     api
@@ -77,6 +88,7 @@ class ArticleAdder extends Component {
 ArticleAdder.propTypes = {
     topic: PropTypes.string.isRequired,
     addArticle: PropTypes.func.isRequired,
+    user: PropTypes.string
 
   };
   

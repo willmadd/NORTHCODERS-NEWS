@@ -9,8 +9,11 @@ import Topicheader from "./Topicheader";
 import SubmittedBy from "./SubmittedBy";
 import Loader from "./Loader";
 import ArticleAdder from "./ArticleAdder";
+import PropTypes from "prop-types";
 
-class articles extends Component {
+
+
+class Articles extends Component {
   state = {
     articles: [],
     error: null
@@ -18,6 +21,7 @@ class articles extends Component {
   };
 
   componentDidMount = () => {
+
     this.getArticles(this.props.match.params.topic_slug);
   };
 
@@ -30,6 +34,7 @@ class articles extends Component {
   };
 
   render() {
+    console.log(this.props.user)
     if(this.state.error) {
       return <Redirect to=
       {{
@@ -47,6 +52,7 @@ class articles extends Component {
           <ArticleAdder
             topic={this.props.match.params.topic_slug}
             addArticle={this.addArticle}
+            user={this.props.user}
           />
         )}
         <ul className="articleUL">
@@ -135,16 +141,28 @@ class articles extends Component {
         this.setState({
           articles
         });
+      })
+      .catch(error=>{
+        this.setState({
+          error
+        })
       });
     }
   };
 
   addArticle = newArticle => {
+    console.log(newArticle)
     const newArticles = [...this.state.articles, newArticle.article];
+    console.log(newArticles)
     this.setState({
       articles: newArticles
     });
   };
 }
 
-export default articles;
+
+Articles.propTypes = {
+  user: PropTypes.string
+};
+
+export default Articles;

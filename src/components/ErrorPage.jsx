@@ -1,12 +1,25 @@
 import React from 'react';
+import './ErrorPage.css'
+
 
 const ErrorPage = (props) => {
     // console.log(props.location.state)
     return (
-        <div>
-            {props.location.state ? props.location.state.message:"page not found"}
-            <h1>Error</h1>
+        <div className="errorBody">
+        <div className="errorContainer">
+        <div className="monsterMessage">            
+            <h1>Something bad happened</h1>
+            <h2>
+
+        {props.location.state ? props.location.state.message:"That Page Doesn't Exist"}
+            </h2>
+            <p>You probably entered the web address incorrectly</p>
+            </div>
+        <div className="monster"></div>
         </div>
+
+        </div>
+        
     );
 };
 

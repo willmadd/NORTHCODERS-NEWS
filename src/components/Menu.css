@@ -12,6 +12,7 @@
 .menuItem {
   padding-right: 40px;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .styled-select.slate {
@@ -54,8 +55,6 @@ nav ul {
 }
 
 nav li {
-  /* color: #fff; */
-  /* background: darkorange; */
   display: block;
   float: left;
   padding: 15px;
@@ -77,7 +76,7 @@ nav li:hover{
 nav ul li ul {
   visibility: hidden;
   opacity: 0;
-  min-width: 5rem;
+  min-width: 10rem;
   position: absolute;
   transition: all 0.5s ease;
   margin-top: 1rem;
@@ -85,8 +84,7 @@ nav ul li ul {
   display: none;
 }
 
-nav ul li:hover > ul,
-nav ul li ul:hover {
+nav ul li:hover > ul{
   visibility: visible;
   opacity: 1;
   display: block;
@@ -96,10 +94,11 @@ nav ul li ul:hover {
 nav ul li ul li {
   clear: both;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .dropdown {
-  z-index: 1000000000;
+  z-index: 1000;
 }
 
 #signupbutton{
@@ -125,7 +124,12 @@ nav ul li ul li {
 }
 
 .menuItem, #navSelect{
-  padding:15px;
   font-family: "Roboto", sans-serif;
   font-size: 12px;
+}
+
+#navSelect{
+  font-weight: 300;
+padding:0px;
+
 }

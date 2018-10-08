@@ -49,3 +49,9 @@ height:30px;
 #submitButton{
     background-color: olivedrab;
 }
+
+#disabledSubmitButton{
+    background-color: #e8e8e8;
+    pointer-events: none;
+    color:darkgray;
+}

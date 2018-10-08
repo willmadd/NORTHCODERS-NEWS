@@ -21,7 +21,6 @@ class Articles extends Component {
   };
 
   componentDidMount = () => {
-
     this.getArticles(this.props.match.params.topic_slug);
   };
 
@@ -34,7 +33,6 @@ class Articles extends Component {
   };
 
   render() {
-    console.log(this.props.user)
     if(this.state.error) {
       return <Redirect to=
       {{
@@ -60,7 +58,6 @@ class Articles extends Component {
             return new moment(article.created_at);
           })
             .reverse()
-            .slice(0, 21)
             .map(article => {
               return (
                 <li key={article._id} className="articleCard">
@@ -151,9 +148,7 @@ class Articles extends Component {
   };
 
   addArticle = newArticle => {
-    console.log(newArticle)
     const newArticles = [...this.state.articles, newArticle.article];
-    console.log(newArticles)
     this.setState({
       articles: newArticles
     });

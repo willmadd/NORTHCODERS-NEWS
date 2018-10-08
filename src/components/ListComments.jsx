@@ -22,7 +22,6 @@ class ListComments extends Component {
 
 
   render() {
-    //   console.log(this.props.user)
     return (
       <div>
         <h3>Comments - You can only delete your own comments</h3>
@@ -123,7 +122,6 @@ this.setState({
 ListComments.propTypes = {
   articleid: PropTypes.string.isRequired,
   user: PropTypes.string
-//   updateComments: PropTypes.func.isRequired
 };
 
 export default ListComments;

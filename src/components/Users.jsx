@@ -12,14 +12,12 @@ class Users extends Component {
   componentDidMount = () => {
     api.getUserInfo(this.props.match.params.username)
     .then(res => {
-      console.log(res)
       this.setState({
         user: res
       });
     })
     .catch(error=>{
-      console.log('error found');
-      console.log(error.message);
+
       this.setState({
         error
       })

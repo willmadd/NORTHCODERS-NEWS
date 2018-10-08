@@ -3,7 +3,6 @@ import './ErrorPage.css'
 
 
 const ErrorPage = (props) => {
-    // console.log(props.location.state)
     return (
         <div className="errorBody">
         <div className="errorContainer">
